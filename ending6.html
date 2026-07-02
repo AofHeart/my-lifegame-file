@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ending.5</title>
+    <style>
+        /* 全体のリセットと基本設定 */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            color: #1e1b4b;
+        }
+
+        /* （ヘッダー）*/
+        header {
+            background: linear-gradient(90deg, #747474, #c8c8c8);
+            height: 60px;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(55, 55, 55, 0.2);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .header-logo {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        /* メインコンテンツ */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: row-reverse;
+            width: 100%;
+            height: calc(100vh - 110px); 
+            box-sizing: border-box;
+        }
+
+        /* 右側に配置されるテキストパネル */
+        .left-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 60px;
+            background-color: #fafafa;
+            box-sizing: border-box;
+        }
+
+        .left-panel h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin: 0 0 16px 0;
+            background: linear-gradient(135deg, #505050, #b0b0b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        /* タイトルとボタンの間の文章 */
+        .intro-text {
+            font-size: 1.1rem;
+            color: #4b5563;
+            line-height: 1.5;
+            margin: 0 0 24px 0;
+            max-width: 520px;
+            white-space: nowrap;      
+            overflow: hidden;          
+            text-overflow: ellipsis;  
+            width: 100%;
+        }
+
+        /* アクションボタン */
+        .action-button {
+            background: linear-gradient(135deg, #646464, #b3b3b3);
+            color: #353535;
+            border: none;
+            padding: 17px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(60, 60, 60, 0.3);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+            outline: none;
+            flex-shrink: 0;
+        }
+
+        .action-button:hover {
+            background: linear-gradient(135deg, #6b6b6b, #dddddd);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(88, 88, 88, 0.4);
+        }
+
+        /* ボタンを押すと表示される文章のエリア */
+        .hidden-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            max-width: 520px;
+            width: 100%;
+        }
+
+        /* アクティブ状態 */
+        .hidden-content.show {
+            max-height: 280px;        
+            opacity: 1;
+            margin-top: 10px;
+            overflow-y: auto;          
+        }
+
+        .hidden-content p {
+            font-size: 1rem;
+            color: #969696;
+            line-height: 1.7;
+            margin: 0 0 12px 0;
+            padding: 0 16px 0 16px;
+        }
+
+        .hidden-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* おしゃれなカード型コンテナ */
+        .text-card {
+            background-color: #ffffff;
+            border-left: 4px solid #969696;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            padding: 20px 4px 20px 4px;
+            box-sizing: border-box;
+        }
+
+        /* 左側に配置される画像パネル */
+        .right-panel {
+            flex: 1;
+            position: relative;
+            background-color: #f3e8ff;
+            overflow: hidden;
+        }
+
+        .right-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .right-panel:hover img {
+            transform: scale(1.03);
+        }
+
+        /* （フッター） */
+        footer {
+            background: #a9a9a9;
+            height: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        footer p {
+            color: rgba(103, 103, 103, 0.6);
+            font-size: 0.85rem;
+            margin: 0;
+            letter-spacing: 0.05em;
+        }
+        .back-button{
+            padding: 5px 60px;
+            font-size: 20px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.2s;
+                }
+
+        .back-button:hover{
+            transform: scale(1.1);
+                }
+        .back-button:active{
+            transform: scale(0.95);
+                }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+                height: auto;
+            }
+            .left-panel {
+                padding: 40px 20px;
+                align-items: center;
+                text-align: center;
+            }
+            .left-panel h1 {
+                font-size: 2.5rem;
+            }
+            .right-panel {
+                height: 350px;
+            }
+            .intro-text {
+                white-space: normal;
+            }
+        }
+            
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-logo">いい加減徳積みな</div>
+    </header>
+
+    <main>
+        <div class="left-panel">
+            <h1>こんな人生、<br>いかがなものか</h1>
+           
+            <p class="intro-text">いかつい過激派に追われる人生</p>
+           
+            <button class="action-button" onclick="toggleContent()">一言コメントを見る</button>
+            <button class="back-button" onclick="backPage()">戻る</button>
+            <div class="hidden-content" id="infoContent">
+                <div class="text-card">
+                    <p>【総合評価：意外とまずい】</p>
+                    <p>天はあなたを見放しました</p>
+                    <p>七転八倒、苦難困難災難だらけの人生</p>
+                    <p>有り難〜い人生ですね(byゴルゴ松本)</p>
+                    <p>ちなみにイカって結構ダジャレ？作りやすいんですね。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <img src="IMG_20260702_150916.jpg" alt="いかが？">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 2G Class Decoration</p>
+    </footer>
+
+    <script>
+        function toggleContent() {
+            const content = document.getElementById('infoContent');
+            const button = document.querySelector('.action-button');
+           
+            content.classList.toggle('show');
+           
+            if (content.classList.contains('show')) {
+                button.innerText = '一言コメントを閉じる';
+            } else {
+                button.innerText = '一言コメントを開く';
+            }
+        }
+        function backPage(){
+            window.location.href = "index.html";
+            }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>2G Class Decoration</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Noto Sans JP",sans-serif;
+    color:#222;
+    background:white;
+    overflow-x:hidden;
+}
+
+:root{
+
+    --main:#6b46c1;
+    --text:#222;
+    --sub:#666;
+    --bg:#f8f8f8;
+
+}
+
+/*  Hero  */
+
+.hero{
+
+    position:relative;
+    height:100vh;
+    overflow:hidden;
+
+}
+
+.hero-bg{
+
+    position:absolute;
+    inset:0;
+
+    background:url("Screenshot 2026-07-02 22.56.07.png") center/cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    opacity:1;
+
+    transition:.15s linear;
+
+}
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:rgba(0,0,0,.28);
+
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    color:white;
+
+    animation:fade 1.2s;
+
+}
+
+.hero-sub{
+
+    letter-spacing:.45em;
+
+    font-size:.9rem;
+
+    margin-bottom:25px;
+
+    opacity:.85;
+
+}
+
+.hero h1{
+
+    font-family:"Noto Serif JP",serif;
+
+    font-size:5.5rem;
+
+    letter-spacing:.12em;
+
+    margin-bottom:30px;
+
+}
+
+.hero p{
+
+    line-height:2;
+
+    font-size:1.1rem;
+
+    font-weight:300;
+
+}
+
+/*  共通  */
+
+section{
+
+    padding:120px 8%;
+
+}
+
+.container{
+
+    width:min(1200px,92%);
+    margin:auto;
+
+}
+
+.content{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:90px;
+
+}
+
+.reverse{
+
+    flex-direction:row-reverse;
+
+}
+
+.text,
+.image{
+
+    flex:1;
+
+}
+
+.image img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:18px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+}
+
+.text h2{
+
+    font-family:"Noto Serif JP",serif;
+
+    font-size:2.8rem;
+
+    margin-bottom:30px;
+
+}
+
+.text p{
+
+    color:#666;
+
+    line-height:2;
+
+}
+
+/*  アニメーション  */
+
+.fade{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:1s;
+
+}
+
+.fade.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+input,
+textarea{
+
+    padding:18px;
+
+    font-size:16px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-family:inherit;
+
+}
+
+textarea{
+
+    min-height:180px;
+
+    resize:vertical;
+
+}
+
+button{
+
+    padding:18px;
+
+    background:#222;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+}
+
+footer{
+
+    padding:40px;
+
+    text-align:center;
+
+    color:#777;
+
+}
+.back-button{
+    background: rgb(181, 181, 181);
+    padding: 5px 60px;
+    font-size: 20px;
+    border: none;
+    border-radius: 15px;                cursor: pointer;
+    transition: transform 0.2s;
+            }
+
+.back-button:hover{
+    transform: scale(1.1);
+            } 
+.back-button:active{
+    transform: scale(0.95);
+            }
+
+/* レスポンシブ */
+
+@media(max-width:900px){
+
+.hero h1{
+
+font-size:3rem;
+
+}
+
+.content{
+
+flex-direction:column;
+
+gap:50px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section class="hero">
+
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+
+        <p class="hero-sub">
+            2G CLASS DECORATION
+        </p>
+
+        <h1>
+            大統領の人生ゲーム
+        </h1>
+
+        <p>
+
+            あなたの作り上げる<br>
+
+            唯一無二の結末。
+
+        </p>
+
+    </div>
+
+</section>
+<section>
+
+    <div class="container content fade">
+
+        <div class="text">
+
+            <h2>変わり続ける社会</h2>
+
+            <p>
+                目まぐるしく変わる社会
+            <br>そこに目を向けてみませんか？
+            </p>
+
+        </div>
+
+        <div class="image">
+
+            <img src="Screenshot 2026-07-03 01.08.18.png" alt="目が回るトランプ">
+
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div class="container content reverse fade">
+
+        <div class="text">
+
+            <h2>あなただけの発見が</h2>
+
+            <p>
+                社会で何が起きているのか
+            <br>あなたの着眼点は唯一無二です
+            </p>
+
+        </div>
+
+        <div class="image">
+
+            <img src="IMG_20260703_013022.jpg" alt="メガネェ">
+
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div class="container content fade">
+
+        <div class="text">
+
+            <h2>新しい考えを生むかも</h2>
+
+            <p>
+                社会を知り、考えることで新しい視点から
+            <br>物事を見ることができるかもしれません
+            </p>
+
+        </div>
+
+        <div class="image">
+
+            <img src="IMG_20260703_014825.jpg" alt="耳ありトランプ">
+
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div class="container content fade">
+
+        <div class="text is-size-2">
+
+        <p>本ゲームには７つのエンディングがございます。
+        <br>お時間があるようでしたらぜひもう一度ご挑戦ください。
+        <br>お時間がない方は結果発表画面の入力欄からいろいろな数字を試してご覧くださいませ。</p>
+        <button class="back-button" onclick="backPage()">戻る</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section style="background:#f7f7f7;">
+
+    <div class="container">
+
+        <h2 style="text-align:center;font-family:'Noto Serif JP',serif;margin-bottom:40px;">
+
+            感想をお聞かせください
+
+        </h2>
+
+        <p style="text-align:center;font-family:'Noto Serif JP',serif;margin-bottom:40px;">
+            あなたの夢、人生観、クラデコへの感想、何でも良いです。あなたの心を、教えてください。
+        </p>
+
+        <form id="form">
+
+            <input type="text" name="name" placeholder="ペンネーム(任意)">
+
+            <textarea name="message" placeholder="感想"></textarea>
+
+            <button type="submit">
+
+                送信
+
+            </button>
+
+        </form>
+
+        <p class="text-align:center">※注１　本サイトのイラスト・絵に関してはすべて生徒たちによって描かれています。
+        <br>　　　　著作権はすべて秋田高校に帰属しますので無断転載などはおやめください。</p>
+        <p class="text-align:center">※注２　多少のデザインの崩れやバグが発生しても多めに見てください。お願いします</p>
+
+    </div>
+
+</section>
+    
+<footer>
+
+    © 2026 2G Class Decoration
+
+</footer>
+
+<script>
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{threshold:.2});
+
+document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
+
+const hero=document.querySelector(".hero-bg");
+
+window.addEventListener("scroll",()=>{
+
+hero.style.opacity=Math.max(0,1-scrollY/700);
+
+});
+function backPage(){
+            window.location.href = "index.html";
+            }
+
+const url = "https://script.google.com/macros/s/AKfycbytq7_FmyPI7tGi-BcqUJzL9bmZLvizgy2bsG13_YLkWMaLSNGaUcm7o8nq3Wg9QdkK/exec";
+
+document.getElementById("form").addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const data = new FormData(this);
+
+    await fetch(url,{
+        method:"POST",
+        body:data
+    });
+
+    alert("ご感想ありがとうございました");
+
+    this.reset();
+
+});
+
+</script>
+
+
+</body>
+</html>

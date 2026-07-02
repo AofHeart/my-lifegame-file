@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+            <title>結果発表！</title>
+            <link rel="stylesheet"
+                href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap" rel="stylesheet">
+            <style>
+                .countener{
+                    display:flex;
+                    justify-content:space-between;
+                        }
+                .body{
+                    text-align:;
+                    margin: 0px 20px;
+                    font-family: "M PLUS Rounded 1c",sans-serif;
+                    background: #fef8e2;
+                        } 
+                .score{
+                    display: inline-block;
+                    width: 100%;
+                    padding: 1.75em;
+                    background: #f2f2f2;
+                    border: 1px solid #b1b1b1;
+                    box-sizing: border-box;
+                    margin: 10px 0px;
+                    font-size: 20px
+                        }
+                .result-button{
+                    padding: 15px 40px;
+                    font-size: 24px;
+                    border: none;
+                    border-radius: 15px;
+                    cursor: pointer;
+                    transition: transform 0.2s;
+                        }
+
+                .result-button:hover{
+                    transform: scale(1.1);
+                        }
+                .result-button:active{
+                    transform: scale(0.95);
+                        }
+                .title{
+                    font-size: 60px;
+                    margin: 0px 60px 0px;
+                    color:rgba(255, 250, 111, 0.996)
+                        }
+                .right{
+                    width:40%;
+                    text-align:center;
+                        }
+                .right img{
+                    width:450px;
+                    margin: 75px 0px;
+                        }
+                .line{
+                    width:500px;
+                    height:2px;
+                    background:#d8b64b;
+                    position:relative;
+                    margin:30px 0 50px;
+                        }
+
+                .diamond{
+                    width:18px;
+                    height:18px;
+
+                    position:absolute;
+                    left:50%;
+                    top:50%;
+
+                    transform:translate(-50%,-50%) rotate(45deg);
+
+                    border:2px solid #d8b64b;
+
+                    background:transparent;
+                    }
+                .explosion{
+                    margin: 0px 70px;
+                    }
+                #loadingScreen{
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: #111;
+                    color: white;
+
+                    display: none;
+
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+
+                    z-index: 9999;
+                }
+
+                .loader{
+                    width: 90px;
+                    height: 90px;
+
+                    border: 10px solid #555;
+                    border-top: 10px solid #00d4ff;
+
+                    border-radius: 50%;
+
+                    animation: spin 1s linear infinite;
+                }
+
+                @keyframes spin{
+                    from{
+                        transform: rotate(0deg);
+                    }
+                    to{
+                        transform: rotate(360deg);
+                    }
+                }
+                footer {
+                    background: #feffc9;
+                    height: 50px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 10;
+                }
+
+                footer p {
+                    color: rgba(255, 145, 145, 0.6);
+                    font-size: 0.85rem;
+                    margin: 0;
+                    letter-spacing: 0.05em;
+                }
+                .text-box { background-color: rgba(50,115,220,0.55);
+                    padding: 0.5rem; 
+                    max-width: 500px; 
+                    width: fit-context; 
+                    text-align: center; 
+                    color: #ffeb3b; }
+                .intro{
+                    font-family: cursive;
+                    }
+
+                @media (max-width: 768px) {
+                /* 左右並びを縦並びに変更 */
+                .countener {
+                    flex-direction: column;
+                }
+            
+                /* 左半分のテキストエリア調整 */
+                .left {
+                    width: 100% !important;
+                    padding: 20px !important;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                }
+
+                /* タイトルのサイズと余白をスマホサイズに */
+                .title {
+                    font-size: 40px;
+                    margin: 0 0 10px 0;
+                }
+
+                /* 装飾ラインが画面幅からはみ出さないよう最大幅を制限 */
+                .line {
+                    width: 100%;
+                    max-width: 300px;
+                    margin: 20px 0;
+                }
+
+                /* 説明文の余白をリセットして中央揃えに */
+                .explosion {
+                    margin: 0 0 20px 0;
+                }
+
+                /* 右半分の画像エリア調整 */
+                .right {
+                    width: 100%;
+                    padding: 20px;
+                    margin-top: 20px;
+                }
+
+                /* 画像がスマホの画面幅を超えないように自動縮小 */
+                .right img {
+                    width: 100%;
+                    max-width: 350px;
+                    height: auto;
+                }
+
+                /* 入力フォームの幅が広がりすぎないよう程よいサイズに制限 */
+                .score {
+                    max-width: 300px;
+                }
+            }
+           </style>
+    </head>
+<body>
+    <section class="hero">
+        <div class="notification is-info">
+            <div class="box text-box">
+            <a href="new.introduce.html" class="intro is-size-3">2G Class Decoration</a>
+            </div>
+        </div>
+    <div class="countener">
+    <div class="hero-body left">
+        <h1 class="title">✨️結果発表！</h1>
+            <div class="line">
+                <div class="diamond"></div>
+            </div>
+            <p class="explosion">人生ゲームで獲得したポイントを入力してください<br>
+                <span >半角入力<span>でお願いします。マイナスの入力も可能です</p>
+        <input type="number" class="score" id="point" placeholder="例)100／-200" required><br>
+        <button class="button result-button is-link" onclick="startLoading()">結果を見る</button>
+    </div>
+    <div class="right">
+
+        <img src="Screenshot 2026-07-02 13.18.31.png" alt="某大統領">
+
+    </div>
+    </div>
+    <div id="loadingScreen">
+    <div class="loader"></div>
+    <h2>集計中...</h2>
+    <p id="loadingText">得点を査定しています...</p>
+    </div>
+    </section>
+    <footer>
+        <p>&copy; 2026 2G Class Decoration</p>
+    </footer>
+
+
+    <script>
+        function startLoading(){
+
+    document.getElementById("loadingScreen").style.display = "flex";
+
+    const text = document.getElementById("loadingText");
+
+    setTimeout(() => {
+        text.textContent = "結果の査定を完了しました。";
+    },750);
+
+    setTimeout(() => {
+        goPage();
+    },1000);
+
+}
+
+function goPage(){
+
+    let value = Number(document.getElementById("point").value);
+
+    if (value >= 1000){
+       window.location.href = "ending1.html";
+    }
+    else if(value >= 700 ){
+       window.location.href = "ending2.html";
+    }
+    else if(value >= 400 ){
+       window.location.href = "ending3.html";
+    }
+    else if(value >= 100 ){
+       window.location.href = "ending4.html";
+    }
+    else if(value >= -200 ){
+       window.location.href = "ending5.html";
+    }
+    else if(value >= -600 ){
+       window.location.href = "ending6.html";
+    }
+    else{
+       window.location.href = "ending7.html";
+    }
+}
+
+        
+
+</script>
+</body>
+</html>
